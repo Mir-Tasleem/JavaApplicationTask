@@ -47,10 +47,10 @@ public class Main {
 
     public static void main(String[] args) {
         Map<Character, Integer> globalalphabetmap= new ConcurrentHashMap<>();
-        String dirPath=args[0];
-        if(dirPath.isEmpty()){
+        if(args.length<=0){
             System.out.println("Directory Path Missing");
         } else{
+            String dirPath=args[0];
             File directory;
             directory=new File(dirPath);
             List<File> files=new ArrayList<>();
@@ -74,6 +74,8 @@ public class Main {
             }
 
             globalalphabetmap.forEach((key, val)-> System.out.println(key+"="+val));
+
+            executor.shutdown();
         }
     }
 }
